@@ -82,14 +82,20 @@ console.log(
         {
           "name": "Investor A",
           "requested_amount": 100,
-          "average_amount": 100
+          "average_amount": 95
         },
         {
           "name": "Investor B",
-          "requested_amount": 25,
-          "average_amount": 25
+          "requested_amount": 1,
+          "average_amount": 1
+        },
+        {
+          "name": "Investor C",
+          "requested_amount": 1,
+          "average_amount": 4
         }
       ]
     }
+
   )
 );
