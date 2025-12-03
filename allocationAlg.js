@@ -9,6 +9,7 @@ let allocationAlg = (investmentInput) => {
   let historicalSum = 0; // Create average sum variable
   let remainingAllocation = investmentInput.allocation_amount;
   let investmentArray = investmentInput.investor_amounts;
+
   for (let i = 0; i < investmentArray.length; i++) { // Determine if total requested amount is greater than available allocation
     requestedSum += investmentArray[i].requested_amount;
     historicalSum += investmentArray[i].average_amount;
