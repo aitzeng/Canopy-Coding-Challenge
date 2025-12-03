@@ -1,4 +1,4 @@
-import { Box, Button, Grid, IconButton, TextField, Typography } from '@mui/material';
+import { Box, Button, Grid, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 type Investor = {
@@ -62,11 +62,15 @@ function InvestorBreakdown({ investors, setInvestors }: InvestorBreakdownProps) 
                 '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
                 '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                '& .MuiInputAdornment-root p': { color: 'white' },
               }}
               label="Name"
               fullWidth
               value={inv.name}
               onChange={(e) => handleChange(index, 'name', e.target.value)}
+              InputProps={{
+                startAdornment: <InputAdornment position="start"></InputAdornment>,
+              }}
             />
           </Grid>
 
@@ -78,12 +82,16 @@ function InvestorBreakdown({ investors, setInvestors }: InvestorBreakdownProps) 
                 '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
                 '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                '& .MuiInputAdornment-root p': { color: 'white' },
               }}
               label="Requested Amount"
               type="number"
               fullWidth
               value={inv.requested_amount}
               onChange={(e) => handleChange(index, 'requested_amount', e.target.value)}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
             />
           </Grid>
 
@@ -95,12 +103,16 @@ function InvestorBreakdown({ investors, setInvestors }: InvestorBreakdownProps) 
                 '& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
                 '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
                 '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': { borderColor: 'white' },
+                '& .MuiInputAdornment-root p': { color: 'white' },
               }}
               label="Average Amount"
               type="number"
               fullWidth
               value={inv.average_amount}
               onChange={(e) => handleChange(index, 'average_amount', e.target.value)}
+              InputProps={{
+                startAdornment: <InputAdornment position="start">$</InputAdornment>,
+              }}
             />
           </Grid>
 

@@ -4,6 +4,7 @@ import './App.css';
 import InvestorBreakdown from './components/InvestorBreakdown';
 import AvailableAllocation from './components/AvailableAllocation';
 import { allocationAlg } from './algorithms/allocationAlg';
+import AllocationResults from './components/AllocationResults';
 
 type Investor = {
   name: string;
@@ -11,21 +12,25 @@ type Investor = {
   average_amount: number | '';
 };
 
+type AllocationResult = Record<string, number>;
+
 function App() {
 
   const [allocation, setAllocation] = useState<number | ''>('');
   const [investors, setInvestors] = useState<Investor[]>([
     { name: '', requested_amount: '', average_amount: '' }
   ]);
+  const [results, setResults] = useState<AllocationResult | null>(null);
+
 
   const handleProrate = (allocation: number | '', investors: Investor[]) => {
-    if (allocation === '' ) {
+    if (allocation === '') {
       return;
     }
     let investmentInfo = { allocation_amount: allocation, investor_amounts: investors }
     console.log('This is investmentInfo', investmentInfo);
     let result = allocationAlg(investmentInfo);
-    console.log('This is the result', result);
+    setResults(result as AllocationResult);
   }
 
   return (
@@ -34,29 +39,44 @@ function App() {
       minHeight: '100vh',
       color: 'white',
     }}>
+
       <Typography variant="h4" gutterBottom>
         Investment Allocation
       </Typography>
+
       <Grid container spacing={2}>
         <Grid size={6}>
-          <Box p={2} border={1} borderRadius={2}>
+          <Box
+            p={2}
+            border={1}
+            borderRadius={2}
+            sx={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
             <AvailableAllocation allocation={allocation} setAllocation={setAllocation} />
             <InvestorBreakdown investors={investors} setInvestors={setInvestors} />
-          </Box>
-          <Box p={2}>
-            <Button variant="contained" onClick={() => handleProrate(allocation, investors)}>
-              Prorate
-            </Button>
+
+            <Box sx={{ flexGrow: 1 }} />
+
+            <Box mt={2}>
+              <Button variant="contained" onClick={() => handleProrate(allocation, investors)}>
+                Prorate
+              </Button>
+            </Box>
           </Box>
         </Grid>
 
         <Grid size={2}>
-          <Box p={2} border={1} borderRadius={2}>
-            Right panel
+          <Box p={2} border={1} borderRadius={2} sx={{ height: '100%' }}>
+            <AllocationResults results={results} />
           </Box>
         </Grid>
-
       </Grid>
+
+
     </Box>
   );
 }
