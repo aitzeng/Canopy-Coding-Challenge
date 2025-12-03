@@ -1,9 +1,13 @@
 import { Grid, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
-function AvailableAllocation() {
+type AllocationProps = {
+  allocation: number | '';
+  setAllocation: React.Dispatch<React.SetStateAction<number | ''>>;
+};
 
-const [allocation, setAllocation] = useState<number | ''>('');
+
+function AvailableAllocation({allocation, setAllocation} : AllocationProps) {
 
   const handleChange = (value: string) => {
     setAllocation(value === '' ? '' : Number(value));

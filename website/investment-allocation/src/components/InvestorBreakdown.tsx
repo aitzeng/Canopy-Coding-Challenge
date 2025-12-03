@@ -7,11 +7,12 @@ type Investor = {
   average_amount: number | '';
 };
 
-function InvestorBreakdown() {
+type InvestorBreakdownProps = {
+  investors: Investor[];
+  setInvestors: React.Dispatch<React.SetStateAction<Investor[]>>;
+};
 
-  const [investors, setInvestors] = useState<Investor[]>([
-    { name: '', requested_amount: '', average_amount: '' }
-  ]);
+function InvestorBreakdown({ investors, setInvestors }: InvestorBreakdownProps) {
 
   const handleChange = (
     index: number,
@@ -104,7 +105,7 @@ function InvestorBreakdown() {
           </Grid>
 
           <Grid size={3}>
-            <Button variant="contained" onClick={() => removeInvestor(index)}>
+            <Button variant="outlined" onClick={() => removeInvestor(index)}>
               Remove Investor</Button>
           </Grid>
 
@@ -112,7 +113,7 @@ function InvestorBreakdown() {
       ))}
 
       <Box mt={2}>
-        <Button variant="contained" onClick={addInvestor}>
+        <Button variant="outlined" onClick={addInvestor}>
           Add Investor
         </Button>
       </Box>

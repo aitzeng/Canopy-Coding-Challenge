@@ -3,7 +3,7 @@
 //Constraints: More requested than allocation given, use historical average investment
 //Edge Cases: Historical amount is 0
 
-let allocationAlg = (investmentInput) => {
+export const allocationAlg = (investmentInput) => {
   let output = {}; //Create resulting variable
   let requestedSum = 0; // Create total requested amount variable
   let historicalSum = 0; // Create average sum variable
@@ -75,28 +75,23 @@ let allocationAlg = (investmentInput) => {
   return output;
 }
 
-console.log(
-  allocationAlg(
-    {
-      "allocation_amount": 100,
-      "investor_amounts": [
-        {
-          "name": "Investor A",
-          "requested_amount": 100,
-          "average_amount": 95
-        },
-        {
-          "name": "Investor B",
-          "requested_amount": 1,
-          "average_amount": 1
-        },
-        {
-          "name": "Investor C",
-          "requested_amount": 1,
-          "average_amount": 4
-        }
-      ]
-    }
+// console.log(
+//   allocationAlg(
+//     {
+//       "allocation_amount": 200,
+//       "investor_amounts": [
+//         {
+//           "name": "A",
+//           "requested_amount": 100,
+//           "average_amount": 100
+//         },
+//         {
+//           "name": "B",
+//           "requested_amount": 25,
+//           "average_amount": 25
+//         }
+//       ]
+//     }
 
-  )
-);
+//   )
+// );
